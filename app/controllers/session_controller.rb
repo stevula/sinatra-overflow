@@ -1,7 +1,7 @@
 #create new session page
-get '/sessions/new' do 
+get '/sessions/new' do
 	if request.xhr?
-		erb :'/sessions/_session_new', layout: false
+		erb :'/sessions/new', layout: false
 	else
 		status 403
 		redirect '/'
@@ -10,7 +10,7 @@ end
 
 
 #login to session
-post '/sessions' do 
+post '/sessions' do
 	user = User.find_by(email: params[:email])
 	if user && user.password = params[:password]
 		session[:id] = user.id
