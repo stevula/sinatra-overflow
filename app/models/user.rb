@@ -1,16 +1,18 @@
 class User < ActiveRecord::Base
-	validates :username, :email, :password_hash, presence: true
-	validates :email, uniqueness: true
+	has_many :posts, foreign_key: :author_id
 
-	include BCrypt
+	# validates :username, :email, :password_hash, presence: true
+	# validates :email, uniqueness: true
 
-	def password
-		@password ||= Password.new(password_hash)
-	end
+	# include BCrypt
 
-	def password=(new_password)
-		@password = Password.create(new_password)
-		self.password_hash = @password
-	end
+	# def password
+	# 	@password ||= Password.new(password_hash)
+	# end
+
+	# def password=(new_password)
+	# 	@password = Password.create(new_password)
+	# 	self.password_hash = @password
+	# end
 
 end
