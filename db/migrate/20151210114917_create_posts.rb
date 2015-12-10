@@ -5,10 +5,10 @@ class CreatePosts < ActiveRecord::Migration
       t.string :title
       t.text :body
       t.boolean :best_answer
-      t.timestamps null: false
 
       t.references :author, index: true
       t.references :question, index: true
+      t.timestamps null: false
     end
   end
 end
