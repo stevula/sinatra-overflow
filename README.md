@@ -7,13 +7,12 @@
 * Jeremy - jp5486
 
 ### User Stories:
-1. Anyone can:
+1. __Anyone can:__
 * view list of questions titles
 * view full details of a question (with answers and comments listed)
 * sign up
 * login
-
-2. Logged in Users can:
+2. __Logged in Users can:__
 * ask questions
 * chose the best answer to their own question
 * answer any questions
