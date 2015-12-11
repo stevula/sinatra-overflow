@@ -1,3 +1,8 @@
+@media (min-width: 30em) {
+    .row { width: 100%; display: table; table-layout: fixed; }
+    .col { display: table-cell; }
+}
+
 body {
   font-family: sans-serif;
   margin: 0 !important;
@@ -72,4 +77,16 @@ hr {
     height: 1px;
     background: #333;
     background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}
+
+form {
+  margin-top:2px;
+}
+
+.question {
+  border-radius: 10px;
+  width: 100%;
+  background-color: white;
+  margin-right:100px;
+  padding: 20px;
 }
