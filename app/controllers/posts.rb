@@ -4,6 +4,7 @@ get '/posts' do
 end
 
 post '/posts' do
+  Post.create(post_type:"answer", body:params[:body] , author_id:current_user.id , question_id:params[:question_id])
   redirect '/posts'
 end
 
