@@ -1,17 +1,21 @@
 <% @posts.each do |post| %>
-  <h2><a href="/posts/<%= post.id %>"><%= post.title %></a> by <%= post.author.username %> <i>Created <%= Time.at(post.created_at).utc.strftime("%H:%M:%S")
- %> hours ago</i><h2><hr>
+  <h2><a href="/posts/<%= post.id %>"><%= post.title %></a>
+    by <%= post.author.username %>
+    <i>Created <%= Time.at(post.created_at).utc.strftime("%H:%M:%S")%> hours ago</i>
+  </h2>
+  <hr>
 <% end %>
 
 
 
 
-  <input class="button" type="submit" id="question-btn" value="New question"></input>
+  <input class="button primary whitetext" type="submit" id="question-btn" value="New question"></input>
+
 <div id="question-form">
 <form action='/posts' method="POST">
   <input type="hidden" name="post_type" value="question">
   <input name="title" placeholder="title..." type="text"></input><br>
   <textarea name="body" placeholder="question..."></textarea><br>
-  <input type="submit" value="Submit question"></input>
+  <input type="submit" class="primary whitetext" value="Submit question"></input>
 </form>
 </div>
