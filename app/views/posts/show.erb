@@ -5,18 +5,18 @@
 <ul>
 <% @answers.each do |answer| %>
   <li><%= answer.body %></li>
-  <ul>
-    <% answer.comments.each do |comment|%>
+    <ul>
+      <% answer.comments.each do |comment|%>
       <li><%= comment.body %></li>
       <% end %>
-   </ul>
+    </ul>
 <% end %>
 </ul>
 
 
 <form action='/posts' method="POST">
   <input type="hidden" name="question_id" value="<%=@question.id%>">
-  <textarea placeholder="Enter Your Answer:"></textarea>
+  <textarea name="body" placeholder="Enter Your Answer:"></textarea>
   <input type="submit" value="Add Answer">
 </form>
 
