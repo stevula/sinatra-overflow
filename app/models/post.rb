@@ -6,9 +6,7 @@ class Post < ActiveRecord::Base
   has_many :votes
 
   def net_votes
-    positive = self.votes.where(value:1).count
-    negative = self.votes.where(value:-1).count
-    return net = positive - negative
+    self.votes.sum(:value)
   end
 
 end

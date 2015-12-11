@@ -1,14 +1,39 @@
 $(document).ready(function() {
-   var btn = $("#question-btn")
-   var form = $("#question-form")
+   var btn = $("#question-btn");
+   var form = $("#question-form");
 
+   var btnComment = $("#comment-btn");
+   var formComment = $("#comment-form");
+
+   var btnAnswer = $("#answer-btn");
+   var formAnswer = $("#answer-form");
+
+   var forms = $(".forms")
+
+   forms.hide();
+
+   formAnswer.hide();
+   formComment.hide();
    form.hide();
+
 	 btn.on('click',function() {
     /* AJAX calls and insertion into #productionForm */
    btn.hide();
    form.show();
-
 });
+
+  btnComment.on('click',function() {
+    /* AJAX calls and insertion into #productionForm */
+   btnComment.hide();
+   formComment.show();
+});
+
+   btnAnswer.on('click',function() {
+    /* AJAX calls and insertion into #productionForm */
+   btnAnswer.hide();
+   formAnswer.show();
+});
+
 	formHandler();
 	logoutHandler();
 });

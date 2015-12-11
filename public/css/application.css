@@ -50,6 +50,10 @@ textarea {
   background-color: orange;
 }
 
+.secondary {
+  background-color: teal;
+}
+
 ul, li {
   list-style: none;
   padding:0px !important;
@@ -87,6 +91,24 @@ form {
   border-radius: 10px;
   width: 100%;
   background-color: white;
+  margin-right:100px;
+  padding: 20px;
+}
+
+.comment {
+  color:teal;
+  margin:4px !important;
+  font-size: 13px;
+}
+
+h2 {
+  color: black;
+}
+
+.answer {
+  border-radius: 10px;
+  width: 100%;
+  background-color: #F3F3F3;
   margin-right:100px;
   padding: 20px;
 }
