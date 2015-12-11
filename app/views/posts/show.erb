@@ -5,6 +5,7 @@
     <input type="hidden" name="value" value="up">
     <input class="upVote button" type="submit" id="vote-btn" value="&#xf062;"></input>
   </form>
+  <span class="net-votes"><%= @question.net_votes %></span>
   <form action='/posts/<%= @question.id %>/votes' method="POST">
     <input type="hidden" name="value" value="down">
     <input class="downVote button"type="submit" id="vote-btn" value="&#xf063;"></input>
@@ -45,14 +46,17 @@
 <ul>
   <% @answers.each do |answer| %>
     <li><%= answer.body %></li>
+
     <form action='/posts/<%= answer.id %>/votes' method="POST">
       <input type="hidden" name="value" value="up">
       <input class="upVote button" type="submit" id="vote-btn" value="&#xf062;"></input>
     </form>
+    <span class="net-votes"><%= answer.net_votes %></span>
     <form action='/posts/<%= answer.id %>/votes' method="POST">
       <input type="hidden" name="value" value="down">
       <input class="downVote button"type="submit" id="vote-btn" value="&#xf063;"></input>
     </form>
+
       <!-- COMMENTS -->
     <p>by: <%= answer.author.username %></p>
       <% if answer.comments.any? %>
