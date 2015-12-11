@@ -1,5 +1,4 @@
 # goal: seed the database in a way that allow us to check for complex scenaris
-require 'faker'
 
 # Make some users with ids 1,2,3 and 4
 4.times do

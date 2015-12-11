@@ -11,7 +11,7 @@ require 'rubygems'
 
 require 'uri'
 require 'pathname'
-
+require 'faker'
 require 'pg'
 require 'active_record'
 require 'logger'
