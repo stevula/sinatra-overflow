@@ -1,5 +1,5 @@
 <% @posts.each do |post| %>
-  <p><a href="/posts/<%= post.id %>"><%= post.title %></a> by <%= post.author.username %></p>
+  <h2><a href="/posts/<%= post.id %>"><%= post.title %></a> by <%= post.author.username %><h2><hr>
 <% end %>
 
 
