@@ -4,12 +4,11 @@ get '/posts' do
 end
 
 post '/posts' do
-
   redirect '/posts'
 end
 
 get '/posts/:id' do
-  @posts = Post.find(params[:id])
-  @answers = @posts.answers
+  @question = Post.find(params[:id])
+  @answers = @question.answers
   erb :'/posts/show'
 end
