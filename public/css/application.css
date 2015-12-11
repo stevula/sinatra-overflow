@@ -30,3 +30,8 @@ a {
   text-decoration: none;
   color:teal;
 }
+
+textarea {
+  width:100%;
+  height:4em;
+}
