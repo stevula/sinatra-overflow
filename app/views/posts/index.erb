@@ -1,0 +1,11 @@
+<% @posts.each do |post| %>
+  <p><a href="/posts/<%= post.id %>"><%= post.title %></a> by <%= post.author.username %></p>
+<% end %>
+
+
+<form action='/posts' method="POST">
+  <input type="hidden" name="post_type" value="question">
+  <input name="title" placeholder="title" type="text"></input><br>
+  <textarea name="body" placeholder="Question"></textarea><br>
+  <input type="submit" value="New question"></input>
+</form>

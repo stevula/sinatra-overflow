@@ -1,0 +1,56 @@
+<!-- QUESTION -->
+<h1><%= @question.title %></h1>
+<p><%= @question.body %></p>
+<p>by: <%= @question.author.username %></p>
+
+<% if @question.comments.any? %>
+<h3><em>Comments</em></h3>
+  <ul>
+    <% @question.comments.each do |comment|%>
+      <li><%= comment.body %></li>
+      <p>by: <%= comment.author.username %></p>
+    <% end %>
+  </ul>
+<% end %>
+
+
+<form action='/posts/<%=@question.id%>/comments' method="POST">
+  <textarea name="body" placeholder="Enter Your Comment:"></textarea>
+  <input type="submit" value="Add Comment">
+</form>
+
+<!-- ANSWER -->
+<h2>Answers</h2>
+<ul>
+  <% @answers.each do |answer| %>
+    <li><%= answer.body %></li>
+      <!-- COMMENTS -->
+    <p>by: <%= answer.author.username %></p>
+      <% if answer.comments.any? %>
+
+      <ul>
+      <h3><em>Comments</em></h3>
+        <% answer.comments.each do |comment|%>
+          <li><%= comment.body %></li>
+          <p>by: <%= comment.author.username %></p>
+        <% end %>
+      </ul>
+      <% end %>
+
+    <form action='/posts/<%=@question.id%>/comments' method="POST">
+      <input type="hidden" name="answer_id" value="<%= answer.id %>">
+      <textarea name="body" placeholder="Enter Your Comment:"></textarea>
+      <input type="submit" value="Add Comment">
+    </form>
+
+  <% end %>
+</ul>
+
+
+<form action='/posts' method="POST">
+  <input type="hidden" name="question_id" value="<%=@question.id%>">
+  <textarea name="body" placeholder="Enter Your Answer:"></textarea>
+  <input type="submit" value="Add Answer">
+</form>
+
+
