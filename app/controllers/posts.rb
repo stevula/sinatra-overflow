@@ -34,3 +34,13 @@ get '/posts/:id' do
   erb :'/posts/show'
 end
 
+put '/posts/:id' do
+  @question = Post.find(params[:id])
+  @answer = Post.find(params[:answer_id])
+  unless @question.best_answer_to_question && current_user == @question.author
+    @answer.update(best_answer:true)
+  end
+  redirect "/posts/#{@question.id}"
+
+end
+
