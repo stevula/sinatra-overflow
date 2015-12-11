@@ -19,7 +19,7 @@ require 'rack-flash'
 require 'bcrypt'
 require 'sinatra'
 require "sinatra/reloader" if development?
-
+require 'Date'
 require 'erb'
 
 # Some helper constants for path-centric logic
