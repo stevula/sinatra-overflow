@@ -4,22 +4,25 @@ get '/posts' do
 end
 
 post '/posts' do
-if current_user
-  if params[:post_type] == "question"
-    Post.create(
-      post_type: params[:post_type],
-      title: params[:title],
-      body: params[:body] ,
-      author_id: current_user.id ,
-      question_id: params[:question_id])
-  else
-    Post.create(
-      post_type:"answer",
-      body:params[:body] ,
-      author_id: current_user.id ,
-      question_id: params[:question_id])
+  if current_user
+    if params[:post_type] == "question"
+      Post.create(
+        post_type: params[:post_type],
+        title: params[:title],
+        body: params[:body] ,
+        author_id: current_user.id ,
+        question_id: params[:question_id])
+        redirect '/posts'
+    else
+      @question = Post.find(params[:question_id])
+      @answers = @question.answers
+      Post.create(
+        post_type:"answer",
+        body:params[:body] ,
+        author_id: current_user.id ,
+        question_id: params[:question_id])
+        erb :'posts/show'
     end
-      redirect '/posts'
   else
     redirect '/posts'
   end
