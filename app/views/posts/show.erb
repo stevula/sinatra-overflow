@@ -2,6 +2,8 @@
 <h1><%= @question.title %></h1>
 <p><%= @question.body %></p>
 <p>by: <%= @question.author.username %></p>
+    <input class="upVote button" type="submit" id="vote-btn" value="&#xf062;"></input>
+    <input class="downVote button"type="submit" id="vote-btn" value="&#xf063;"></input>
 
 <% if @question.comments.any? %>
 <h3><em>Comments</em></h3>
@@ -24,10 +26,13 @@
 <ul>
   <% @answers.each do |answer| %>
     <li><%= answer.body %></li>
+     <input class="upVote button" type="submit" id="vote-btn" value="&#xf062;"></input>
+     <input class="downVote button"type="submit" id="vote-btn" value="&#xf063;"></input>
+
       <!-- COMMENTS -->
     <p>by: <%= answer.author.username %></p>
       <% if answer.comments.any? %>
-
+<!-- need to add 2 buttons for voting -->
       <ul>
       <h3><em>Comments</em></h3>
         <% answer.comments.each do |comment|%>
