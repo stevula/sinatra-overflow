@@ -5,7 +5,26 @@ require 'faker'
 4.times do
   User.create(username: Faker::Internet.user_name, email: Faker::Internet.safe_email, password: Faker::Internet.password)
 end
+# Make few posts
+n = 1
+n.times do
+  # Create a post object named post
+  post = Post.create(post_name: Faker::Hacker.noun)
 
+  1.times do
+  post.question << Post.create()
+  post.answer << Post.create()
+  post.
+  post.answer << Post.create()
+  post.comments << Comment.create(post_id: n, question: Faker::Hacker.say_something_smart, answer: Faker::Hacker.adjective)
+
+  n += 1
+  break if n > 10
+  end
+end
+
+# we create a bunch of users
+=======
 # Make a few stuff
 1.times do
 
@@ -28,3 +47,4 @@ comment_to_answer = Comment.create(body: Faker::Hacker.say_something_smart, post
 comment_to_question = Comment.create(body: Faker::Hacker.say_something_smart, post_id: 1, author_id: 1)
 
 end
+>>>>>>> 90e9ab826a1df544d5e683fe6be5ea03065c720e
