@@ -1,9 +1,19 @@
 $(document).ready(function() {
+   var btn = $("#question-btn")
+   var form = $("#question-form")
+
+   form.hide();
+	 btn.on('click',function() {
+    /* AJAX calls and insertion into #productionForm */
+   btn.hide();
+   form.show();
+
+});
 	formHandler();
 	logoutHandler();
 });
 
-var formHandler = function() { 
+var formHandler = function() {
 	$('body').on('click', '.popup_form', function(event) {
 		event.preventDefault();
 		var targetUrl = $(this).attr('href')
@@ -18,8 +28,8 @@ var formHandler = function() {
 	});
 }
 
-var logoutHandler = function() { 
-	$('body').on('click', '#log_out', function(event) { 
+var logoutHandler = function() {
+	$('body').on('click', '#log_out', function(event) {
 		event.preventDefault();
 		var userId = $(this).attr('href').match(/\d+/)
 		var response = $.ajax({
@@ -27,14 +37,20 @@ var logoutHandler = function() {
 			url: '/sessions/' + userId
 		});
 		response.done(function() {
-			location.reload();	
+			location.reload();
 		});
-		response.fail(function() { 
+		response.fail(function() {
 			console.log('Logout Failed');
 		});
 	});
 }
 
-var clearForms = function () { 
+var clearForms = function () {
 	$('.show_form').empty();
 }
+
+$("#form1").submit(function() {
+    /* AJAX calls and insertion into #productionForm */
+    $("#productionForm").show();
+    return false;
+});
