@@ -14,13 +14,13 @@
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/js/application.js"></script>
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <title></title>
 </head>
 <body>
   <header>
     <div class="container menu">
-      <a href="/" class="whitetext"><b class="orangetext">DBC</b> overflow</a>
+      <a href="/" class="whitetext"><i class="whitetext fa fa-stack-overflow"></i> dbc<b>overflow</b></a>
       <%if current_user  %>
         <span class="whitetext right">Logged in as <%=@current_user.username %>
         &nbsp;<a id='log_out' href='/sessions/<%=current_user.id%>'>Log Out</a></span>
