@@ -1,16 +1,35 @@
-<h1>Show Page</h1>
+<!-- QUESTION -->
+<h1><%= @question.title %></h1>
+<p><%= @question.body %></p>
+<p>by: <%= @question.author.username %></p>
+<!-- need a comment form -->
+  <form action='/posts' method="POST">
+   <input type="hidden" name="question_id" value="<%=@question.id%>">
+    <textarea name="body" placeholder="Enter Your Answer:"></textarea>
+    <input type="submit" value="Add Answer">
+  </form>
 
-<%= @question.title %><br>
-<%= @question.body %><br>
+<!-- ANSWER -->
+<h2>Answers</h2>
 <ul>
-<% @answers.each do |answer| %>
-  <li><%= answer.body %></li>
-    <ul>
-      <% answer.comments.each do |comment|%>
-      <li><%= comment.body %></li>
+  <% @answers.each do |answer| %>
+    <li><%= answer.body %></li>
+<!-- need a comment form -->
+
+      <!-- COMMENTS -->
+    <p>by: <%= answer.author.username %></p>
+      <% if answer.comments.any? %>
+
+      <ul>
+      <h3><em>Comments</em></h3>
+        <% answer.comments.each do |comment|%>
+          <li><%= comment.body %></li>
+          <p>by: <%= comment.author.username %></p>
+        <% end %>
+      </ul>
+
       <% end %>
-    </ul>
-<% end %>
+  <% end %>
 </ul>
 
 
@@ -19,7 +38,11 @@
   <textarea name="body" placeholder="Enter Your Answer:"></textarea>
   <input type="submit" value="Add Answer">
 </form>
-
+<form action='/posts' method="POST">
+  <input type="hidden" name="question_id" value="<%=@question.id%>">
+  <textarea name="body" placeholder="Enter Your Answer:"></textarea>
+  <input type="submit" value="Add Answer">
+</form>
 
 
 

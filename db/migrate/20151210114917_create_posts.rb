@@ -4,7 +4,7 @@ class CreatePosts < ActiveRecord::Migration
       t.string :post_type
       t.string :title
       t.text :body
-      t.boolean :best_answer
+      t.boolean :best_answer, default: false
 
       t.references :author, index: true
       t.references :question, index: true

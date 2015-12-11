@@ -1,5 +1,5 @@
 get '/posts' do
-  @posts = Post.all
+  @posts = Post.where(post_type: "question")
   erb :'/posts/index'
 end
 
