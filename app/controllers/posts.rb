@@ -1,6 +1,6 @@
 get '/posts' do
-
-  erb :'/index'
+  @posts = Post.all
+  erb :'/posts/index'
 end
 
 post '/posts' do
@@ -9,6 +9,7 @@ post '/posts' do
 end
 
 get '/posts/:id' do
-
+  @posts = Post.find(params[:id])
+  @answers = @posts.answers
   erb :'/posts/show'
 end
