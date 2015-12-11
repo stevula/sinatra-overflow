@@ -9,4 +9,8 @@ class Post < ActiveRecord::Base
     self.votes.sum(:value)
   end
 
+  def best_answer_to_question
+    self.answers.find_by(best_answer:true)
+  end
+
 end

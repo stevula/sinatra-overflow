@@ -57,7 +57,13 @@
 <h2>Answers</h2>
 
   <% @answers.each do |answer| %>
-
+    <% if current_user== @question.author && !@question.best_answer_to_question %>
+      <form action="/posts/<%=@question.id%>" method="POST">
+        <input type="hidden" name="_method" value="PUT">
+        <input type="hidden" name="answer_id" value="<%=answer.id%>">
+        <input type="submit" value="Best Answer!">
+      </form>
+    <%end%>
 
 <div class="row answer">
     <div class="col" style="width:40px">
@@ -73,6 +79,8 @@
     </form>
     </div>
     <div class="col">
+
+    <% if answer.best_answer%><p><strong>Best Answer</strong></p><%end%>
     <li><%= answer.body %> <br><br>by: <%= answer.author.username %></li>
   </div>
 </div>
