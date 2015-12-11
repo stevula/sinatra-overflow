@@ -1,3 +1,4 @@
+      <h2>Question</h2>
 
 <div class="row question">
     <div class="col" style="width:40px">
@@ -9,6 +10,8 @@
     <input type="hidden" name="value" value="down">
     <input class="downVote button"type="submit" id="vote-btn" value="&#xf063;"></input>
   </form>
+
+
   </div>
 
     <div class="col">
@@ -22,29 +25,40 @@
 
 <% if @question.comments.any? %>
 
-<h3><em>Comments</em></h3>
-  <ul>
+<!-- <h4><em>Comments</em></h4>
+ -->
+
+ <ul>
 
     <% @question.comments.each do |comment|%>
 
-      <li><%= comment.body %></li>
-      <p>by: <%= comment.author.username %></p>
+      <p class="comment"><%= comment.body %> – by: <%= comment.author.username %></p>
 
     <% end %>
   </ul>
 <% end %>
 
 
-<form action='/posts/<%=@question.id%>/comments' method="POST">
-  <textarea name="body" placeholder="Enter Your Comment:"></textarea>
-  <input type="submit" value="Add Comment">
-</form>
+<input class="button primary whitetext" type="submit" id="comment-btn" value="Comment"></input>
 
+<form action='/posts/<%=@question.id%>/comments' id="comment-form" method="POST">
+  <textarea name="body" placeholder="Enter Your Comment:"></textarea>
+  <input type="submit" class="primary whitetext" value="Add Comment">
+</form>
+<input class="button secondary whitetext" type="submit" id="answer-btn" value="Answer"></input>
+
+<form action='/posts' method="POST" class="forms" id="answer-form">
+  <input type="hidden" name="question_id" value="<%=@question.id%>">
+  <textarea name="body" placeholder="Enter Your Answer:"></textarea>
+  <input type="submit" value="Add Answer">
+</form>
 <!-- ANSWER -->
 <h2>Answers</h2>
-<ul>
+
   <% @answers.each do |answer| %>
-    <li><%= answer.body %></li>
+
+<div class="row answer">
+    <div class="col" style="width:40px">
     <form action='/posts/<%= answer.id %>/votes' method="POST">
       <input type="hidden" name="value" value="up">
       <input class="upVote button" type="submit" id="vote-btn" value="&#xf062;"></input>
@@ -53,33 +67,28 @@
       <input type="hidden" name="value" value="down">
       <input class="downVote button"type="submit" id="vote-btn" value="&#xf063;"></input>
     </form>
-      <!-- COMMENTS -->
-    <p>by: <%= answer.author.username %></p>
-      <% if answer.comments.any? %>
-<!-- need to add 2 buttons for voting -->
-      <ul>
-      <h3><em>Comments</em></h3>
-        <% answer.comments.each do |comment|%>
-          <li><%= comment.body %></li>
-          <p>by: <%= comment.author.username %></p>
-        <% end %>
-      </ul>
-      <% end %>
+    </div>
+    <div class="col">
+    <li><%= answer.body %> <br><br>by: <%= answer.author.username %></li>
+  </div>
+</div>
 
-    <form action='/posts/<%=@question.id%>/comments' method="POST">
-      <input type="hidden" name="answer_id" value="<%= answer.id %>">
-      <textarea name="body" placeholder="Enter Your Comment:"></textarea>
-      <input type="submit" value="Add Comment">
-    </form>
+<ul>
+
+
+
+
+      <!-- COMMENTS -->
+
+
+
+
+<input class="button primary whitetext" type="submit" id="comment-btn" value="Comment"></input>
+
+<form visibility="hidden" action='/posts/<%=@question.id%>/comments' class="forms" id="comment-form" method="POST">
+  <textarea name="body" placeholder="Enter Your Comment:"></textarea>
+  <input type="submit" class="primary whitetext" value="Add Comment">
+</form>
 
   <% end %>
 </ul>
-
-
-<form action='/posts' method="POST">
-  <input type="hidden" name="question_id" value="<%=@question.id%>">
-  <textarea name="body" placeholder="Enter Your Answer:"></textarea>
-  <input type="submit" value="Add Answer">
-</form>
-
-

@@ -4,4 +4,11 @@ class Post < ActiveRecord::Base
   has_many :answers, class_name: "Post", foreign_key: :question_id
   has_many :comments
   has_many :votes
+
+  def net_votes
+    positive = self.votes.where(value:1).count
+    negative = self.votes.where(value:-1).count
+    return net = positive - negative
+  end
+
 end
