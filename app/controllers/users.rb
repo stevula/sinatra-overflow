@@ -1,9 +1,3 @@
-#show all users
-get '/users' do
-	@users = User.all
-	erb :'/users/user_index'
-end
-
 #new user form
 get '/users/new' do
 	if request.xhr?
