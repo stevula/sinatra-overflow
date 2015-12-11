@@ -1,11 +1,15 @@
 post '/posts/:id/votes' do
-  value = params[:value] == 'up' ? 1 : -1
   post = Post.find(params[:id])
-  Vote.create(
-    voter_id: current_user.id,
-    post_id: params[:id],
-    value: value
-    )
+  value = params[:value] == 'up' ? 1 : -1
+
+  if current_user
+    Vote.create(
+      voter_id: current_user.id,
+      post_id: params[:id],
+      value: value
+      )
+  end
+
   if post.post_type == "question"
     redirect "/posts/#{post.id}"
   else
