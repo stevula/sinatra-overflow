@@ -21,13 +21,6 @@ $(document).ready(function() {
   btnComment.on('click',function() {
    btnComment.hide();
    formComment.show();
-});
-
-   btnAnswer.on('click',function() {
-   btnAnswer.hide();
-   formAnswer.show();
-});
-
 $('input[type=submit]').click(function() {
   // event.preventDefault();
   // console.log(this)
@@ -38,6 +31,13 @@ $('input[type=submit]').click(function() {
   $(this).hide()
   $(this).siblings().show();
 })
+});
+
+   btnAnswer.on('click',function() {
+   btnAnswer.hide();
+   formAnswer.show();
+});
+
 
 // $(".formzform").hide();
 // for (i = 0; i < numberofbuttons; i++) {
