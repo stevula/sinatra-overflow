@@ -22,3 +22,6 @@ II. **Logged in Users can:**
 * up/down vote once on each answer
 * comment on any question
 * comment on any answer
+
+III. **Schema**
+![Schema](/readme_assets/schema.png)

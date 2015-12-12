@@ -1,14 +1,61 @@
 $(document).ready(function() {
-   var btn = $("#question-btn")
-   var form = $("#question-form")
 
+   var btn = $("#question-btn");
+   var form = $("#question-form");
+
+   var btnComment = $("#comment-btn");
+   var formComment = $("#comment-form");
+
+   var btnAnswer = $("#answer-btn");
+   var formAnswer = $("#answer-form");
+
+   formAnswer.hide();
+   formComment.hide();
    form.hide();
+
 	 btn.on('click',function() {
-    /* AJAX calls and insertion into #productionForm */
    btn.hide();
    form.show();
-
 });
+
+  btnComment.on('click',function() {
+   btnComment.hide();
+   formComment.show();
+$('input[type=submit]').click(function() {
+  // event.preventDefault();
+  // console.log(this)
+  // console.log($(this))
+  // console.log($(this).parent())
+  // $(this).parent().child.hide();
+  console.log($(this).siblings()[0])
+  $(this).hide()
+  $(this).siblings().show();
+})
+});
+
+   btnAnswer.on('click',function() {
+   btnAnswer.hide();
+   formAnswer.show();
+});
+
+
+// $(".formzform").hide();
+// for (i = 0; i < numberofbuttons; i++) {
+
+//    var btnComment = $("#comment-btn" + i);
+//    var formComment = $("#comment-form" + i);
+
+//    // console.log(formComment);
+//    // console.log(btnComment);
+//    btnComment.on('click',function() {
+
+//    btnComment.hide();
+//    formComment.show();
+//   });
+// }
+
+
+
 	formHandler();
 	logoutHandler();
 });
