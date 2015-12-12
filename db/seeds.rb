@@ -28,7 +28,7 @@ end
 comment_count = 300
 
 comment_count.times do
-  Comment.create(body: Faker::Hacker.say_something_smart, author_id: (rand * author_count + 1).round, post_id: (rand * post_count + 1).round)
+  Comment.create(body: Faker::Hacker.say_something_smart, author_id: (rand * author_count + 1).round, post_id: (rand * question_count + answer_count + 1).round)
 end
 
 # votes
