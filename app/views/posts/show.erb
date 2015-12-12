@@ -87,12 +87,15 @@
 
 <ul>
 
-<input class="button primary whitetext" type="submit" id="comment-btn" value="Comment"></input>
 
-<form visibility="hidden" action='/posts/<%=@question.id%>/comments' class="forms" id="comment-form" method="POST">
+<div class="subcomment">
+<input class="button primary whitetext formzbutton" type="submit" id="comment-btn<%="#{answer.id}"%>" value="Comment"></input>
+
+<form action='/posts/<%=@question.id%>/comments' class="formzform" id="comment-form<%="#{answer.id}"%>" method="POST">
   <textarea name="body" placeholder="Enter Your Comment:"></textarea>
   <input type="submit" class="primary whitetext" value="Add Comment">
 </form>
 
   <% end %>
 </ul>
+</div>
