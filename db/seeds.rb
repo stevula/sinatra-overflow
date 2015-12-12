@@ -1,8 +1,6 @@
 # goal: seed the database in a way that allow us to check for complex scenarios
 require 'faker'
 
-# Make some users with ids 1,2,3 and 4
-
 # authors
 author_count = 20
 
@@ -10,31 +8,58 @@ author_count.times do
   User.create(username: Faker::Internet.user_name, email: Faker::Internet.safe_email, password: Faker::Internet.password)
 end
 
-# questions
-question_count = 20
+USERS = User.all
 
-question_count.times do
-  Post.create(post_type: "question" , title: Faker::Hacker.adjective , body: Faker::Hacker.say_something_smart, author_id: (rand * author_count + 1).round)
+# questions
+questions_per_author = 5
+
+USERS.each do |author|
+  questions_per_author.times do
+    Post.create(
+      post_type: "question",
+      title: Faker::Hacker.adjective,
+      body: Faker::Hacker.say_something_smart,
+      author_id: author.id
+      )
+  end
 end
 
 # answers
-answer_count = 200
+answers_per_question = 5
 
-answer_count.times do
-  Post.create(post_type: "answer", body: Faker::Hacker.say_something_smart, author_id: (rand * author_count + 1).round, question_id: (rand * question_count + 1).round)
+Post.where(post_type: "question").each do |question|
+  answers_per_question.times do
+    Post.create(
+      post_type: "answer",
+      body: Faker::Hacker.say_something_smart,
+      question_id: question.id,
+      author_id: USERS.sample.id
+      )
+  end
 end
 
 # comments
-comment_count = 300
+comments_per_post = 2
 
-comment_count.times do
-  Comment.create(body: Faker::Hacker.say_something_smart, author_id: (rand * author_count + 1).round, post_id: (rand * question_count + answer_count + 1).round)
+Post.all.each do |post|
+  comments_per_post.times do
+    Comment.create(
+      body: Faker::Hacker.say_something_smart,
+      author_id: USERS.sample.id,
+      post_id: post.id
+      )
+  end
 end
 
 # votes
-# Post.all.each do |post|
-#   vote_count = (rand * 30).round
-#   vote_count.times do
-#     post.votes << Vote.create(value: 1, voter_id: (rand * author_count + 1))
-#   end
-# end
+votes_per_post = 30
+
+Post.all.each do |post|
+  votes_per_post.times do
+    post.votes << Vote.create(
+      value: 1,
+      post_id: post.id,
+      voter_id: USERS.sample.id
+      )
+  end
+end

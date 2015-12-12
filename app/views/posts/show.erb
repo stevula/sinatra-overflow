@@ -57,11 +57,11 @@
 <h2>Answers</h2>
 
   <% @answers.each do |answer| %>
-    <% if current_user== @question.author && !@question.best_answer_to_question %>
+    <% if current_user == @question.author && !@question.best_answer_to_question %>
       <form action="/posts/<%=@question.id%>" method="POST">
         <input type="hidden" name="_method" value="PUT">
         <input type="hidden" name="answer_id" value="<%=answer.id%>">
-        <input type="submit" value="Best Answer!">
+        <input class="button" type="submit" value="Best Answer!">
       </form>
     <%end%>
 
