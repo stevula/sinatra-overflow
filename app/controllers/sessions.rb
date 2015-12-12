@@ -1,4 +1,4 @@
-#create new session page
+#create new session page / login
 get '/sessions/new' do
 	if request.xhr?
 		erb :'/sessions/new', layout: false
@@ -7,7 +7,6 @@ get '/sessions/new' do
 		redirect '/'
 	end
 end
-
 
 #login to session
 post '/sessions' do
@@ -22,8 +21,7 @@ post '/sessions' do
 	end
 end
 
-
-#delete session
+#delete session / logout
 delete '/sessions/:id' do
 	if request.xhr?
 		current_user = nil
