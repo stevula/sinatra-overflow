@@ -21,14 +21,14 @@ end
 answer_count = 200
 
 answer_count.times do
-  Post.create(post_type: "answer", body: Faker::Hacker.say_something_smart, author_id: (rand * author_count + 1).round, question_id: (rand * answer_count + 1).round)
+  Post.create(post_type: "answer", body: Faker::Hacker.say_something_smart, author_id: (rand * author_count + 1).round, question_id: (rand * question_count + 1).round)
 end
 
 # comments
 comment_count = 300
 
 comment_count.times do
-  Comment.create(body: Faker::Hacker.say_something_smart, author_id: (rand * author_count + 1).round, post_id: (rand * comment_count).round)
+  Comment.create(body: Faker::Hacker.say_something_smart, author_id: (rand * author_count + 1).round, post_id: (rand * post_count + 1).round)
 end
 
 # votes
