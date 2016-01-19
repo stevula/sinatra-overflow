@@ -1,8 +1,7 @@
-# goal: seed the database in a way that allow us to check for complex scenarios
 require 'faker'
 
 # authors
-author_count = 20
+author_count = 10
 
 author_count.times do
   User.create(username: Faker::Internet.user_name, email: Faker::Internet.safe_email, password: Faker::Internet.password)
@@ -11,7 +10,7 @@ end
 USERS = User.all
 
 # questions
-questions_per_author = 5
+questions_per_author = 3
 
 USERS.each do |author|
   questions_per_author.times do
@@ -25,7 +24,7 @@ USERS.each do |author|
 end
 
 # answers
-answers_per_question = 5
+answers_per_question = 3
 
 Post.where(post_type: "question").each do |question|
   answers_per_question.times do
@@ -52,14 +51,18 @@ Post.all.each do |post|
 end
 
 # votes
-votes_per_post = 30
+avg_votes_per_post = 6
 
 Post.all.each do |post|
-  votes_per_post.times do
+  randomized_vote_count = (rand * avg_votes_per_post * 2).round
+  randomized_vote_count.times do
     post.votes << Vote.create(
       value: 1,
       post_id: post.id,
       voter_id: USERS.sample.id
       )
   end
+  post.save
 end
+
+# best answer
